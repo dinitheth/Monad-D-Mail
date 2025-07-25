@@ -2,7 +2,6 @@
 
 Monad D-Mail is a fully decentralized messaging application built on the Monad Testnet. It provides a censorship-resistant, secure, and user-friendly platform for sending and receiving messages directly on the blockchain. This dApp demonstrates the power of high-performance EVM-compatible blockchains like Monad to create fast, responsive, and truly decentralized applications.
 
-![Monad D-Mail Screenshot](./public/screenshot.png?raw=true "Monad D-Mail Application")
 
 ## Key Features
 
@@ -34,7 +33,7 @@ Follow these instructions to set up and run the project locally for development 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/monad-dmail.git
+git clone https://github.com/dinitheth/Monad-D-Mail
 cd monad-dmail
 ```
 
