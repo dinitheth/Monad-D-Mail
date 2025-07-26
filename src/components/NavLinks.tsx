@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -10,10 +11,10 @@ interface NavLinksProps {
 }
 
 const navLinks = [
-  { href: '/inbox', label: 'Inbox', icon: Inbox },
+  { href: '/inbox', label: 'Public Feed', icon: Inbox },
+  { href: '#', label: 'Inbox', icon: Inbox, disabled: true },
   { href: '/send', label: 'Send', icon: Send },
   { href: '/contacts', label: 'Contacts', icon: Contact },
-  { href: '/groups', label: 'Groups', icon: Users, disabled: true },
 ];
 
 export function NavLinks({ onLinkClick }: NavLinksProps) {
@@ -32,7 +33,7 @@ export function NavLinks({ onLinkClick }: NavLinksProps) {
           const isActive = pathname === href || (href === '/inbox' && pathname === '/');
           return (
             <Link
-              key={href}
+              key={href + label}
               href={disabled ? '#' : href}
               onClick={onLinkClick}
               className={cn(

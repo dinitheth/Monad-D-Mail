@@ -15,7 +15,6 @@ export default function InboxPage() {
 
   return (
     <div className="p-4 sm:p-6 lg:p-8">
-      <h2 className="text-2xl font-bold mb-6 font-headline text-foreground">Inbox</h2>
 
       {messages.length === 0 ? (
         <div className="text-center py-16 rounded-lg border-2 border-dashed border-muted-foreground/20 max-w-3xl mx-auto mt-8">

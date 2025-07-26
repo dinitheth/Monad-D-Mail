@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { formatDistanceToNow } from 'date-fns';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Globe } from 'lucide-react';
 import { useContacts } from '@/hooks/use-contacts';
 import { useState, useEffect } from 'react';
 
@@ -20,6 +20,9 @@ interface MessageCardProps {
   currentUser: string | null;
 }
 
+const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+
+
 export function MessageCard({ message, index, currentUser }: MessageCardProps) {
   const { getContactByAddress } = useContacts();
   const [timeAgo, setTimeAgo] = useState('');
@@ -32,6 +35,7 @@ export function MessageCard({ message, index, currentUser }: MessageCardProps) {
 
   const isSender = currentUser && message.author.toLowerCase() === currentUser.toLowerCase();
   const isRecipient = currentUser && message.recipient.toLowerCase() === currentUser.toLowerCase();
+  const isPublicBroadcast = message.recipient === ZERO_ADDRESS;
   
   const authorContact = getContactByAddress(message.author);
   const recipientContact = getContactByAddress(message.recipient);
@@ -43,7 +47,10 @@ export function MessageCard({ message, index, currentUser }: MessageCardProps) {
   }
 
   const authorDisplayName = getDisplayName(message.author, authorContact, isSender);
-  const recipientDisplayName = getDisplayName(message.recipient, recipientContact, isRecipient);
+  
+  const recipientDisplayName = isPublicBroadcast 
+    ? 'Public' 
+    : getDisplayName(message.recipient, recipientContact, isRecipient);
 
   return (
     <div 
@@ -63,9 +70,15 @@ export function MessageCard({ message, index, currentUser }: MessageCardProps) {
                           {authorDisplayName}
                       </span>
                       <ArrowRight className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                      <span className="font-semibold font-code truncate" title={message.recipient}>
+                      {isPublicBroadcast ? (
+                        <span className="font-semibold font-code truncate flex items-center gap-1.5">
+                          <Globe className="h-4 w-4 text-accent" /> {recipientDisplayName}
+                        </span>
+                      ) : (
+                         <span className="font-semibold font-code truncate" title={message.recipient}>
                           {recipientDisplayName}
-                      </span>
+                        </span>
+                      )}
                   </div>
               </div>
            </div>
