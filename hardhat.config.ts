@@ -1,13 +1,12 @@
-import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox";
-import "dotenv/config";
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv/config");
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 if (!PRIVATE_KEY) {
   throw new Error("Please set your PRIVATE_KEY in a .env file");
 }
 
-const config: HardhatUserConfig = {
+module.exports = {
   solidity: "0.8.24",
   networks: {
     monad: {
@@ -21,5 +20,3 @@ const config: HardhatUserConfig = {
     artifacts: "./src/artifacts"
   }
 };
-
-export default config;
