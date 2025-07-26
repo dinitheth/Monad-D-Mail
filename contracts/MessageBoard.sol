@@ -22,7 +22,6 @@ contract MessageBoard {
     );
 
     function sendMessage(address _recipient, string calldata _text) public {
-        require(_recipient != address(0), "Recipient cannot be the zero address");
         require(bytes(_text).length > 0, "Message text cannot be empty");
 
         messages[nextId] = Message({
