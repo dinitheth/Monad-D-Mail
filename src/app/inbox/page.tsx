@@ -39,7 +39,7 @@ export default function InboxPage() {
                     {isSent ? "You" : (msg.author.slice(0, 6) + "..." + msg.author.slice(-4))}
                   </span>
                   <span>
-                    {isClient ? new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}
+                    {isClient ? new Date(msg.timestamp).toLocaleString([], { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : ''}
                   </span>
                 </div>
                 <p className="text-base whitespace-pre-wrap break-words text-left">
