@@ -5,8 +5,8 @@ import { WalletProvider } from '@/context/WalletContext';
 import { AppShell } from '@/components/AppShell';
 
 export const metadata: Metadata = {
-  title: 'Monad Message Board',
-  description: 'A zero-lag message board built for the Monad ecosystem.',
+  title: 'Monad D-Mail',
+  description: 'A zero-lag message app built for the Monad ecosystem.',
 };
 
 export default function RootLayout({
